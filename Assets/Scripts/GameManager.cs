@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,8 +19,21 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale == 0 && Input.GetKeyDown(KeyCode.Return))
+        if (Time.timeScale == 0 && Input.GetKeyDown(KeyCode.Return) && Txt_Message.color == Color.white)
+        {
             StartGame();
+        }
+        else if (Time.timeScale == 0 && Input.GetKeyDown(KeyCode.Return) && Txt_Message.color == Color.red)
+        {
+            SceneManager.LoadScene(0);
+        }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+
     }
 
     public void UpdateScore(int value)
